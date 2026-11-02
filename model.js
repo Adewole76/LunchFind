@@ -1,3 +1,4 @@
+'use strict'
 export const saveItems = (key, value) => {
    const savedItem = localStorage.setItem(key, value);
 }
