@@ -1,6 +1,6 @@
 const getCarouselRecipes = async () => {
     try{
-       const response = await fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood');
+       const response = await fetch('https://www.themealdb.com/api/json/v1/1/categories.php');
        if(!response.ok){
         throw new Error('Request failed')
        }
