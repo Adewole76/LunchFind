@@ -1,5 +1,6 @@
 'use strict'
 import {mappingCarouselDisplays} from '../view/home-view.js';
+import {favourites} from "../model.js";
 
 let activeFilter = 'Breakfast';
 
@@ -14,6 +15,10 @@ const getCarouselRecipes = async () => {
     
        const recipes = await response.json();
        //console.log(recipes);
+      
+    const filteredCarouselRecipes = recipes.meals.filter(recipe => recipes.meals.indexOf(recipe) < 4);
+    console.log(filteredCarouselRecipes);
+    mappingCarouselDisplays(filteredCarouselRecipes, carouselTrack);
        return recipes;
     }catch(error){
       console.log(error);
@@ -25,9 +30,6 @@ categorySelect.addEventListener('click', async (event) => {
   if(event.target.closest('.category-btn')){
     const particularCategory = event.target.closest('.category-btn').textContent;
     activeFilter = particularCategory;
-    const carouselRecipes = await getCarouselRecipes();
-    const filteredCarouselRecipes = carouselRecipes.meals.filter(recipe => carouselRecipes.meals.indexOf(recipe) < 4);
-    console.log(filteredCarouselRecipes);
-    mappingCarouselDisplays(filteredCarouselRecipes, carouselTrack);
+    await getCarouselRecipes();
   }
 })
