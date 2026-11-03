@@ -28,5 +28,6 @@ categorySelect.addEventListener('click', async (event) => {
     const carouselRecipes = await getCarouselRecipes();
     const filteredCarouselRecipes = carouselRecipes.meals.filter(recipe => carouselRecipes.meals.indexOf(recipe) < 4);
     console.log(filteredCarouselRecipes);
+    mappingCarouselDisplays(filteredCarouselRecipes, carouselTrack);
   }
 })
