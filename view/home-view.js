@@ -1,7 +1,7 @@
 'use strict'
 export const mappingCarouselDisplays = (arr, container) =>{
    const mappedCarouselDisplays = arr.map(item => {
-    return`<div>
+    return`<div class="carousel-slide">
     <img src="${item.strMealThumb}" class="carousel-image" alt="slide-image">
     <p class="recipe-name">${item.strMeal}</p>
     </div>

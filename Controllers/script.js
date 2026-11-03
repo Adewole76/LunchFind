@@ -4,6 +4,8 @@ import {favourites} from "../model.js";
 
 let activeFilter = 'Breakfast';
 
+const prevBtn = document.querySelector('.previous');
+const nextBtn = document.querySelector('.next');
 const categorySelect = document.querySelector('.category-select');
 const carouselTrack = document.querySelector('.carousel-track');
 const getCarouselRecipes = async () => {
@@ -13,9 +15,7 @@ const getCarouselRecipes = async () => {
         throw new Error('Request failed')
        }
     
-       const recipes = await response.json();
-       //console.log(recipes);
-      
+    const recipes = await response.json();
     const filteredCarouselRecipes = recipes.meals.filter(recipe => recipes.meals.indexOf(recipe) < 4);
     console.log(filteredCarouselRecipes);
     mappingCarouselDisplays(filteredCarouselRecipes, carouselTrack);
@@ -32,4 +32,14 @@ categorySelect.addEventListener('click', async (event) => {
     activeFilter = particularCategory;
     await getCarouselRecipes();
   }
+})
+
+let slideCount = 0
+prevBtn.addEventListener('click', function(){
+  slideCount= slideCount + 1;
+  carouselTrack.style.transform = `translateX(${slideCount * -100}%)`;
+});
+nextBtn.addEventListener('click', function(){
+  slideCount = slideCount - 1;
+  carouselTrack.style.transform = `translateX(${slideCount * 100}%)`;
 })

@@ -1,0 +1,115 @@
+:root {
+  /* ---------- Colours ---------- */
+  /* 60%: white and light gray (backgrounds, cards) */
+  --white: #FFFFFF;
+  --gray-100: #F4F4F4;      /* cards, panels */
+  --gray-200: #E5E5E5;      /* card borders, dividers */
+  --gray-300: #CFCFCF;      /* chip, input and round-button borders */
+  --skeleton: #E0E0E0;      /* loading placeholders */
+
+  /* 30%: deep charcoal (text, headline panel) */
+  --charcoal: #2F0505;
+  --muted: #6E5555;         /* labels, captions, secondary text */
+  --on-charcoal-soft: #EBD9D9;  /* subtitle text on the charcoal panel */
+
+  /* 10%: crimson accent (buttons, active chip, saved heart) */
+  --crimson: #CC1B1B;
+
+  /* Overlays and shadows */
+  --heart-bg: rgba(255, 255, 255, 0.94);
+  --shadow-heart: 0 2px 8px rgba(47, 5, 5, 0.2);
+  --shadow-arrow: 0 4px 14px rgba(47, 5, 5, 0.3);
+  --focus-ring: 3px solid var(--charcoal);
+
+  /* Placeholder food tones (replaced by real photos) */
+  --food-1: #8C4A1F;
+  --food-2: #6B2F1A;
+  --food-3: #A4521F;
+  --food-4: #5C3D2E;
+  --food-5: #9A6A3A;
+  --food-6: #7A3B1E;
+
+  /* ---------- Font families ---------- */
+  --font-display: 'Lora', Georgia, serif;          /* headlines */
+  --font-ui: 'Montserrat', sans-serif;             /* nav, buttons, chips, labels */
+  --font-body: 'Open Sans', sans-serif;            /* reading text */
+
+  /* ---------- Font weights ---------- */
+  --fw-regular: 400;   /* Open Sans body */
+  --fw-medium: 500;    /* Montserrat chips */
+  --fw-semibold: 600;  /* nav links, labels, active chip, Open Sans emphasis */
+  --fw-bold: 700;      /* Lora headlines, buttons */
+
+  /* ---------- Font sizes ---------- */
+  --fs-hero: clamp(36px, 6vw, 64px);   /* home headline */
+  --fs-modal-title: 52px;              /* recipe name in the modal */
+  --fs-section: 36px;                  /* "Search all recipes" */
+  --fs-state-title: 26px;              /* empty and error titles */
+  --fs-logo: 24px;
+  --fs-subheading: 24px;               /* "Ingredients", "Method" */
+  --fs-card-title: 22px;
+  --fs-lead: 18px;                     /* hero subtitle */
+  --fs-body: 16px;                     /* default text, input */
+  --fs-ui: 15px;                       /* buttons, chips, nav links */
+  --fs-caption: 13px;
+  --fs-label: 12px;                    /* uppercase labels */
+
+  /* ---------- Line heights and letter spacing ---------- */
+  --lh-heading: 1.05;
+  --lh-body: 1.5;
+  --ls-heading: -0.01em;
+  --ls-label: 0.06em;
+
+  /* ---------- Corner radii ---------- */
+  --radius-skeleton: 12px;
+  --radius-card: 20px;
+  --radius-panel: 24px;
+  --radius-hero: 28px;
+  --radius-pill: 999px;
+
+  /* ---------- Layout ---------- */
+  --page-max: 1200px;
+  --page-gutter: 24px;
+  --grid-gap: 24px;
+  --card-min: 300px;                   /* result grid: 3 columns on desktop */
+  --tap-target: 44px;                  /* minimum size for buttons, chips, hearts */
+  --carousel-height: clamp(240px, 42vw, 520px);
+}
+
+.carousel-container{
+    width: 100%;
+    overflow-x: hidden;
+}
+.carousel-track{
+    width: 100%;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide{
+    flex: 0 0 100%;
+    position: relative;
+    max-height: 400px;
+    overflow:hidden
+}
+.carousel-slide img{
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+.carousel-slide .recipe-name{
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.carousel-slide:hover .carousel-image{
+    transform: scale(1.2);
+
+}
+
+
+
