@@ -79,6 +79,7 @@
 .carousel-container{
     width: 100%;
     overflow-x: hidden;
+    position: relative;
 }
 .carousel-track{
     width: 100%;
@@ -111,5 +112,15 @@
 
 }
 
+.next{
+    position: absolute;
+    right: 0;
+    top: 50%;
+}
+.previous{
+    position: absolute;
+    z-index: 1000;
+    top: 50%;
+}
 
 

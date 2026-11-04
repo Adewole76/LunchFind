@@ -35,11 +35,22 @@ categorySelect.addEventListener('click', async (event) => {
 })
 
 let slideCount = 0
-prevBtn.addEventListener('click', function(){
-  slideCount= slideCount + 1;
-  carouselTrack.style.transform = `translateX(${slideCount * -100}%)`;
-});
 nextBtn.addEventListener('click', function(){
+  if(slideCount === 3){
+     slideCount = 0
+     slideCount= slideCount + 1;
+  console.log(slideCount);
+  carouselTrack.style.transform = `translateX(${slideCount * -100}%)`;
+  }else{
+  slideCount= slideCount + 1;
+  console.log(slideCount);
+  carouselTrack.style.transform = `translateX(${slideCount * -100}%)`;
+  }
+});
+prevBtn.addEventListener('click', function(){
+  if(slideCount !== 0){
   slideCount = slideCount - 1;
+  console.log(slideCount);
   carouselTrack.style.transform = `translateX(${slideCount * 100}%)`;
-})
+  }
+});
