@@ -13,3 +13,22 @@ if(arr.length > 0){
     container.innerHTML = '<p>No network</p>';
 }
 }
+
+export const mappingSearchedRecipes = (arr, container) => {
+    const mappedSearchedRecipes = arr.map(item => {
+        return `<div class="recipe">
+        <div>
+        <img class="recipe-image" alt="recipe-thumbnail">
+        </div>
+        <section>
+          <p>${item.strCategory}.${item.strCountry}<p>
+          <p>${item.strMeal}</p>
+        </section>
+        </div>`
+    }).join('')
+if(arr.length > 0){
+    container.innerHTML = mappedSearchedRecipes;
+}else{
+    container.innerHTML = `<p>No results for your search</p>`
+}
+}

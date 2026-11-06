@@ -1,12 +1,13 @@
 'use strict'
-import {mappingCarouselDisplays} from '../view/home-view.js';
-import {favourites} from "../model.js";
+import { mappingCarouselDisplays } from '../view/home-view.js';
+import { mappingSearchedRecipes } from '../view/home-view.js';
+import { favourites } from "../model.js";
 
 const debounce = (func, delay) => {
 let timerId;
 return function(...args){
   clearTimeout(timerId);
-  timerId =  setTimeout(() => func.apply(this, ...args), delay)
+  timerId =  setTimeout(() => func.apply(this, args), delay)
 }
 }
 let activeFilter = 'Breakfast';
@@ -36,17 +37,27 @@ const getCarouselRecipes = async () => {
 }
  getCarouselRecipes();
 
- const getRecipes = async () =>{
+ const getRecipes = async (query) =>{
   try{
-   const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${recipeSearchInput.value}`);
+   const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`);
    if(!response.ok){
     throw new Error(`Request failed:${response.status}`)
    }
    console.log(response);
+   console.log(await response.json());
   }catch(error){
     console.log(error)
   }
  }
+
+const debouncedSearch = debounce(getRecipes, 300);
+
+ recipeSearchInput.addEventListener('input', function(e){
+   const query = e.target.value.trim();
+   if(query){
+    debouncedSearch(query);
+   }
+ })
 categorySelect.addEventListener('click', async (event) => {
   if(event.target.closest('.category-btn')){
     const particularCategory = event.target.closest('.category-btn').textContent;
