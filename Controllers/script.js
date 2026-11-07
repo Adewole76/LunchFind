@@ -44,9 +44,18 @@ const getCarouselRecipes = async () => {
     throw new Error(`Request failed:${response.status}`)
    }
    console.log(response);
-   console.log(await response.json());
+   console.log(query);
+   const data = await response.json();
+   console.log(data.meals);
+   if(data.meals !== null){
+   mappingSearchedRecipes(data.meals, recipesContainer);
+   }else if(data.meals && query === ''){
+     recipesContainer.innerHTML = `<p>Type to search for recipes</p>`
+   }else{
+    recipesContainer.innerHTML = `<p>No results for your search</p>`
+   }
   }catch(error){
-    console.log(error)
+    console.log(error);
   }
  }
 
@@ -54,8 +63,11 @@ const debouncedSearch = debounce(getRecipes, 300);
 
  recipeSearchInput.addEventListener('input', function(e){
    const query = e.target.value.trim();
-   if(query){
-    debouncedSearch(query);
+   if(recipeSearchInput.value){
+    debouncedSearch(recipeSearchInput.value);
+    console.log(recipeSearchInput.value);
+   }else if(recipeSearchInput.value === ''){
+    recipesContainer.innerHTML = `<p>Type to search for recipes</p>`
    }
  })
 categorySelect.addEventListener('click', async (event) => {

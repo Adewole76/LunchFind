@@ -16,9 +16,9 @@ if(arr.length > 0){
 
 export const mappingSearchedRecipes = (arr, container) => {
     const mappedSearchedRecipes = arr.map(item => {
-        return `<div class="recipe">
+        return `<div class="recipe" data-user-id = ${item.idMeal}>
         <div>
-        <img class="recipe-image" alt="recipe-thumbnail">
+        <img src="${item.strMealThumb}"class="recipe-image" alt="recipe-thumbnail">
         </div>
         <section>
           <p>${item.strCategory}.${item.strCountry}<p>
@@ -28,7 +28,7 @@ export const mappingSearchedRecipes = (arr, container) => {
     }).join('')
 if(arr.length > 0){
     container.innerHTML = mappedSearchedRecipes;
-}else{
+}else if(!arr){
     container.innerHTML = `<p>No results for your search</p>`
 }
 }
