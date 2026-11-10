@@ -47,7 +47,7 @@ const getCarouselRecipes = async () => {
    console.log(query);
    const data = await response.json();
    console.log(data.meals);
-   if(data.meals !== null){
+   if(data.meals !== null && query !== ''){
    mappingSearchedRecipes(data.meals, recipesContainer);
    }else if(data.meals && query === ''){
      recipesContainer.innerHTML = `<p>Type to search for recipes</p>`
@@ -66,7 +66,7 @@ const debouncedSearch = debounce(getRecipes, 300);
    if(recipeSearchInput.value){
     debouncedSearch(recipeSearchInput.value);
     console.log(recipeSearchInput.value);
-   }else if(recipeSearchInput.value === ''){
+   }else if(!recipeSearchInput.value){
     recipesContainer.innerHTML = `<p>Type to search for recipes</p>`
    }
  })
