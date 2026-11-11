@@ -37,9 +37,17 @@ const getCarouselRecipes = async () => {
 }
  getCarouselRecipes();
 
+ let currentController = null;
  const getRecipes = async (query) =>{
+  if (currentController) {
+    currentController.abort();
+  }
+  currentController = new AbortController();
+
   try{
-   const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`);
+   const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`,{
+      signal: currentController.signal,
+   });
    if(!response.ok){
     throw new Error(`Request failed:${response.status}`)
    }
