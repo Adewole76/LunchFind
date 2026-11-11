@@ -35,49 +35,39 @@ const getCarouselRecipes = async () => {
     }
     
 }
- getCarouselRecipes();
+getCarouselRecipes();
 
- let currentController = null;
- const getRecipes = async (query) =>{
-  if (currentController) {
-    currentController.abort();
+let abortController = null;
+const getRecipesBySearch = async (searchQuery) => {
+  if (abortController) {
+    abortController.abort();
   }
-  currentController = new AbortController();
+  abortController = new AbortController();
 
   try{
-   const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`,{
-      signal: currentController.signal,
-   });
+   const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchQuery}`, {
+      signal: abortController.signal
+    });
    if(!response.ok){
-    throw new Error(`Request failed:${response.status}`)
+    throw new Error(`Request Failed`);
    }
-   console.log(response);
-   console.log(query);
-   const data = await response.json();
-   console.log(data.meals);
-   if(data.meals !== null && query !== ''){
-   mappingSearchedRecipes(data.meals, recipesContainer);
-   }else if(data.meals && query === ''){
-     recipesContainer.innerHTML = `<p>Type to search for recipes</p>`
-   }else{
-    recipesContainer.innerHTML = `<p>No results for your search</p>`
-   }
+   const recipeData = await response.json();
+   console.log(recipeData.meals);
+   mappingSearchedRecipes(recipeData.meals, recipesContainer);
+   return recipeData.meals;
   }catch(error){
-    console.log(error);
+    console.log(error)
   }
- }
+}
 
-const debouncedSearch = debounce(getRecipes, 300);
-
- recipeSearchInput.addEventListener('input', function(e){
-   const query = e.target.value.trim();
-   if(recipeSearchInput.value){
-    debouncedSearch(recipeSearchInput.value);
-    console.log(recipeSearchInput.value);
-   }else if(!recipeSearchInput.value){
-    recipesContainer.innerHTML = `<p>Type to search for recipes</p>`
-   }
- })
+recipeSearchInput.addEventListener('input', function(){
+  if(recipeSearchInput.value.trim('') === ''){
+ debounce(getRecipesBySearch(recipeSearchInput.value.trim()), 300);  
+}else{
+ debounce(getRecipesBySearch(recipeSearchInput.value.trim()), 300);  
+}
+//  mappingSearchedRecipes();
+});
 categorySelect.addEventListener('click', async (event) => {
   if(event.target.closest('.category-btn')){
     const particularCategory = event.target.closest('.category-btn').textContent;
