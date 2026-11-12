@@ -4,12 +4,20 @@ import { mappingSearchedRecipes } from '../view/home-view.js';
 import { favourites } from "../model.js";
 
 const debounce = (func, delay) => {
-let timerId;
-return function(...args){
-  clearTimeout(timerId);
-  timerId =  setTimeout(() => func.apply(this, args), delay)
-}
-}
+  let timerId;
+
+  const debounced = function (...args) {
+    clearTimeout(timerId);
+    timerId = setTimeout(() => func.apply(this, args), delay);
+  };
+
+  // Allows us to kill a pending timer immediately
+  debounced.cancel = () => {
+    clearTimeout(timerId);
+  };
+
+  return debounced;
+};
 let activeFilter = 'Breakfast';
 
 const recipeSearchInput = document.querySelector('.recipe-search-input');
@@ -38,35 +46,53 @@ const getCarouselRecipes = async () => {
 getCarouselRecipes();
 
 let abortController = null;
+
 const getRecipesBySearch = async (searchQuery) => {
   if (abortController) {
     abortController.abort();
   }
   abortController = new AbortController();
 
-  try{
-   const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchQuery}`, {
-      signal: abortController.signal
-    });
-   if(!response.ok){
-    throw new Error(`Request Failed`);
-   }
-   const recipeData = await response.json();
-   console.log(recipeData.meals);
-   mappingSearchedRecipes(recipeData.meals, recipesContainer);
-   return recipeData.meals;
-  }catch(error){
-    console.log(error)
-  }
-}
+  try {
+    const response = await fetch(
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchQuery}`,
+      { signal: abortController.signal }
+    );
 
-recipeSearchInput.addEventListener('input', function(){
-  if(recipeSearchInput.value.trim('') === ''){
- debounce(getRecipesBySearch(recipeSearchInput.value.trim()), 300);  
-}else{
- debounce(getRecipesBySearch(recipeSearchInput.value.trim()), 300);  
-}
-//  mappingSearchedRecipes();
+    if (!response.ok) {
+      throw new Error('Request Failed');
+    }
+
+    const recipeData = await response.json();
+    if(recipeData.meals !== null){
+    console.log(recipeData.meals);
+    mappingSearchedRecipes(recipeData.meals, recipesContainer);
+    }else{
+      recipesContainer.innerHTML = `No results for your search`
+    }
+    return recipeData.meals;
+  } catch (error) {
+    if (error.name !== 'AbortError') {
+      console.error(error);
+    }
+  }
+};
+
+
+const debouncedGetRecipes = debounce(getRecipesBySearch, 300);
+
+recipeSearchInput.addEventListener('input', function () {
+  const query = recipeSearchInput.value.trim();
+
+  if (query === '') {
+    debouncedGetRecipes.cancel();
+    if (abortController) abortController.abort();
+    recipesContainer.innerHTML = `Type to search for recipes`
+   // mappingSearchedRecipes(null, recipesContainer);
+    return;
+  }
+
+  debouncedGetRecipes(query);
 });
 categorySelect.addEventListener('click', async (event) => {
   if(event.target.closest('.category-btn')){
