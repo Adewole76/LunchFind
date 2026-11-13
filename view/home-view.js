@@ -24,6 +24,7 @@ export const mappingSearchedRecipes = (arr, container) => {
           <p>${item.strCategory}.${item.strCountry}<p>
           <p>${item.strMeal}</p>
         </section>
+        <button class="favourite-btn">Favourite</button>
         </div>`
     }).join('')
 if(arr.length > 0){
