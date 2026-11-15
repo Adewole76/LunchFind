@@ -2,6 +2,8 @@
 import { mappingCarouselDisplays } from '../view/home-view.js';
 import { mappingSearchedRecipes } from '../view/home-view.js';
 import { favourites } from "../model.js";
+import { saveItems } from "../model.js";
+import { getItems } from "../model.js";
 
 const debounce = (func, delay) => {
   let timerId;
@@ -46,7 +48,7 @@ const getCarouselRecipes = async () => {
 getCarouselRecipes();
 
 let abortController = null;
-
+let resultforCall;
 const getRecipesBySearch = async (searchQuery) => {
   if (abortController) {
     abortController.abort();
@@ -68,9 +70,11 @@ const getRecipesBySearch = async (searchQuery) => {
     console.log(recipeData.meals);
     mappingSearchedRecipes(recipeData.meals, recipesContainer);
     }else{
-      recipesContainer.innerHTML = `No results for your search`
+      recipesContainer.innerHTML = `<p>No results for your search</p>`
     }
+    resultforCall = recipeData.meals
     return recipeData.meals;
+
   } catch (error) {
     if (error.name !== 'AbortError') {
       console.error(error);
@@ -87,13 +91,25 @@ recipeSearchInput.addEventListener('input', function () {
   if (query === '') {
     debouncedGetRecipes.cancel();
     if (abortController) abortController.abort();
-    recipesContainer.innerHTML = `Type to search for recipes`
+    recipesContainer.innerHTML = `<p>Type to search for recipes</p>`
    // mappingSearchedRecipes(null, recipesContainer);
     return;
   }
 
   debouncedGetRecipes(query);
+  
 });
+recipesContainer.addEventListener('click', (event) => {
+  if(event.target.closest('.favourite-btn')){
+    const particularRecipeCard = event.target.closest('.recipe');
+    console.log(resultforCall);
+    console.log(particularRecipeCard);
+    const particularRecipeId = particularRecipeCard.dataset.userId;
+    const particularRecipe = resultforCall.find(item => item.idMeal === particularRecipeId)
+    console.log(particularRecipe)
+  }
+});
+
 categorySelect.addEventListener('click', async (event) => {
   if(event.target.closest('.category-btn')){
     const particularCategory = event.target.closest('.category-btn').textContent;
