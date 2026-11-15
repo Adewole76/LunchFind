@@ -102,6 +102,8 @@ recipeSearchInput.addEventListener('input', function () {
 recipesContainer.addEventListener('click', (event) => {
   if(event.target.closest('.favourite-btn')){
     const particularRecipeCard = event.target.closest('.recipe');
+    const favouriteImg = particularRecipeCard.querySelector('.favourite-images');
+    console.log(favouriteImg.src);
     console.log(resultforCall);
     console.log(particularRecipeCard);
     const particularRecipeId = particularRecipeCard.dataset.userId;
