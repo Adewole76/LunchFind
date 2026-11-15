@@ -1,6 +1,6 @@
 'use strict'
 export const saveItems = (key, value) => {
-   const savedItem = localStorage.setItem(key, value);
+   const savedItem = localStorage.setItem(key, JSON.stringify(value));
 }
 export const getItems = (valueKey) => {
     let saveditem = localStorage.getItem(valueKey);

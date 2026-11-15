@@ -107,6 +107,9 @@ recipesContainer.addEventListener('click', (event) => {
     const particularRecipeId = particularRecipeCard.dataset.userId;
     const particularRecipe = resultforCall.find(item => item.idMeal === particularRecipeId)
     console.log(particularRecipe)
+    favourites.unshift(particularRecipe);
+    console.log(favourites);
+    saveItems('favourites', favourites);
   }
 });
 
