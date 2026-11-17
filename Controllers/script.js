@@ -70,6 +70,12 @@ const getRecipesBySearch = async (searchQuery) => {
     if(recipeData.meals !== null){
     console.log(recipeData.meals);
     mappingSearchedRecipes(recipeData.meals, recipesContainer);
+    const heartImages = document.querySelectorAll('.favourite-images');
+    for(let i = 0; i < heartImages.length; i++){
+    if(favourites.some(item => item.idMeal === heartImages[i].dataset.imageId)){
+      heartImages[i].src = '/image/hearts.png';
+    }
+    }
     }else{
       recipesContainer.innerHTML = `<p>No results for your search</p>`
     }
@@ -103,6 +109,8 @@ recipeSearchInput.addEventListener('input', function () {
 recipesContainer.addEventListener('click', (event) => {
   if(event.target.closest('.favourite-btn') || event.target.closest('.favourite-images')){
     const particularRecipe = event.target.closest('.recipe');
+    const particularBtnImage = particularRecipe.querySelector('.favourite-images');
+    console.log(particularBtnImage);
     console.log(particularRecipe);
     const recipeId = particularRecipe.dataset.userId;
      const particularRecipeObject = resultforCall.find(item => item.idMeal === recipeId)
@@ -111,7 +119,9 @@ recipesContainer.addEventListener('click', (event) => {
     console.log(typeof particularRecipeObject.idMeal);
     if(favourites.some(item => item.idMeal === recipeId)){
      filterFavouritesArray(recipeId);
+     particularBtnImage.src = '/image/heart.png';
     }else if(!favourites.some(item => item.idMeal === recipeId)){
+      particularBtnImage.src = '/image/hearts.png';
       favourites.push(particularRecipeObject)
       saveItems('favourites', favourites);
     }
