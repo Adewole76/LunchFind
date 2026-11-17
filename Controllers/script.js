@@ -4,7 +4,8 @@ import { mappingSearchedRecipes } from '../view/home-view.js';
 import { favourites } from "../model.js";
 import { saveItems } from "../model.js";
 import { getItems } from "../model.js";
-
+import { filterFavouritesArray } from "../model.js";
+console.log(favourites);
 const debounce = (func, delay) => {
   let timerId;
 
@@ -100,35 +101,20 @@ recipeSearchInput.addEventListener('input', function () {
   
 });
 recipesContainer.addEventListener('click', (event) => {
-  if(event.target.closest('.favourite-btn') || event.target.closest('favourite-images')){
-    const particularRecipeCard = event.target.closest('.recipe');
-    const favouriteImg = particularRecipeCard.querySelector('.favourite-images');
-    console.log(favouriteImg.getAttribute('src'))
-    if(favouriteImg.getAttribute('src') === "/image/heart.png"){
-      console.log('The recipe has been favourited')
-      favouriteImg.src = '/image/hearts.png'
-       console.log(resultforCall);
-    console.log(particularRecipeCard);
-    const particularRecipeId = particularRecipeCard.dataset.userId;
-    const particularRecipe = resultforCall.find(item => item.idMeal === particularRecipeId)
-    console.log(particularRecipe)
-    // favourites.push(particularRecipe);
-    // console.log(favourites);
-    // saveItems('favourites', favourites);
-    }else if(favouriteImg.getAttribute('src') === "/image/hearts.png"){
-    console.log('The recipe has been favourited')
-    favouriteImg.src = '/image/heart.png'
-    console.log(resultforCall);
-    console.log(particularRecipeCard);
-    const particularRecipeId = particularRecipeCard.dataset.userId;
-    console.log(particcu)
-    const particularRecipe = resultforCall.find(item => item.idMeal === particularRecipeId)
-    console.log(particularRecipe)
-    // let filteredFavourites = favourites.filter(item => item.idMeal === particularRecipeId);
-    // console.log(filteredFavourites);
-    // saveItems('favourites', filteredFavourites);
+  if(event.target.closest('.favourite-btn') || event.target.closest('.favourite-images')){
+    const particularRecipe = event.target.closest('.recipe');
+    console.log(particularRecipe);
+    const recipeId = particularRecipe.dataset.userId;
+     const particularRecipeObject = resultforCall.find(item => item.idMeal === recipeId)
+    console.log(recipeId, typeof recipeId);
+    console.log(particularRecipeObject)
+    console.log(typeof particularRecipeObject.idMeal);
+    if(favourites.some(item => item.idMeal === recipeId)){
+     filterFavouritesArray(recipeId);
+    }else if(!favourites.some(item => item.idMeal === recipeId)){
+      favourites.push(particularRecipeObject)
+      saveItems('favourites', favourites);
     }
-   
   }
 });
 

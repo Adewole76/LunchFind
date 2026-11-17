@@ -9,4 +9,9 @@ export const getItems = (valueKey) => {
 
     return usableSavedItem;
 }
-export let favourites = [];
+export let favourites = getItems('favourites')?getItems('favourites'):[];
+export const filterFavouritesArray = (particularId) => {
+    favourites = favourites.filter(item => item.idMeal !== particularId);
+    saveItems('favourites', favourites);
+    console.log(favourites);
+}
