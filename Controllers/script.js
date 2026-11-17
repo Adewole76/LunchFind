@@ -100,18 +100,35 @@ recipeSearchInput.addEventListener('input', function () {
   
 });
 recipesContainer.addEventListener('click', (event) => {
-  if(event.target.closest('.favourite-btn')){
+  if(event.target.closest('.favourite-btn') || event.target.closest('favourite-images')){
     const particularRecipeCard = event.target.closest('.recipe');
     const favouriteImg = particularRecipeCard.querySelector('.favourite-images');
-    console.log(favouriteImg.src);
-    console.log(resultforCall);
+    console.log(favouriteImg.getAttribute('src'))
+    if(favouriteImg.getAttribute('src') === "/image/heart.png"){
+      console.log('The recipe has been favourited')
+      favouriteImg.src = '/image/hearts.png'
+       console.log(resultforCall);
     console.log(particularRecipeCard);
     const particularRecipeId = particularRecipeCard.dataset.userId;
     const particularRecipe = resultforCall.find(item => item.idMeal === particularRecipeId)
     console.log(particularRecipe)
-    favourites.unshift(particularRecipe);
-    console.log(favourites);
-    saveItems('favourites', favourites);
+    // favourites.push(particularRecipe);
+    // console.log(favourites);
+    // saveItems('favourites', favourites);
+    }else if(favouriteImg.getAttribute('src') === "/image/hearts.png"){
+    console.log('The recipe has been favourited')
+    favouriteImg.src = '/image/heart.png'
+    console.log(resultforCall);
+    console.log(particularRecipeCard);
+    const particularRecipeId = particularRecipeCard.dataset.userId;
+    console.log(particcu)
+    const particularRecipe = resultforCall.find(item => item.idMeal === particularRecipeId)
+    console.log(particularRecipe)
+    // let filteredFavourites = favourites.filter(item => item.idMeal === particularRecipeId);
+    // console.log(filteredFavourites);
+    // saveItems('favourites', filteredFavourites);
+    }
+   
   }
 });
 
