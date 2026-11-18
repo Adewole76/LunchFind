@@ -177,3 +177,26 @@ main header p{
     max-width: 400px;
 }
 
+/*category select section styles*/
+.category-select{
+    margin-bottom: 2em;
+}
+.category-select .active-category {
+    background-color:var(--crimson);
+    padding: 1em;
+    border: none;
+    border-radius: 2em;
+    font-weight:var(--fw-regular);
+    font-family:var(--font-ui);
+    color:var(--white);
+}
+.category-btn{
+    background-color: transparent;
+    padding: 1em;
+    border: 1.5px solid var(--gray-300);
+    border-radius: 2em;
+    font-weight:var(--fw-regular);
+    font-family:var(--font-ui);
+    color:var(--charcoal);
+}
+

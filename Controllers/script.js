@@ -27,6 +27,7 @@ const recipeSearchInput = document.querySelector('.recipe-search-input');
 const recipesContainer = document.querySelector('.recipes-container');
 const prevBtn = document.querySelector('.previous');
 const nextBtn = document.querySelector('.next');
+const categorySelectBtns = document.querySelectorAll('.category-btn');
 const categorySelect = document.querySelector('.category-select');
 const carouselTrack = document.querySelector('.carousel-track');
 const getCarouselRecipes = async () => {
@@ -128,10 +129,19 @@ recipesContainer.addEventListener('click', (event) => {
   }
 });
 
+
 categorySelect.addEventListener('click', async (event) => {
   if(event.target.closest('.category-btn')){
-    const particularCategory = event.target.closest('.category-btn').textContent;
-    activeFilter = particularCategory;
+    const particularCategory = event.target.closest('.category-btn');
+    const particularCategoryText = event.target.closest('.category-btn').textContent;
+    console.log(particularCategory, particularCategoryText);
+    activeFilter = particularCategoryText;
+    particularCategory.classList.add('active-category');
+    for(let i = 0; i < categorySelectBtns.length; i++){
+      if(categorySelectBtns[i].textContent !== particularCategoryText){
+        categorySelectBtns[i].classList.remove('active-category');
+      }
+    }
     await getCarouselRecipes();
   }
 })
