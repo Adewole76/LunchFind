@@ -76,6 +76,30 @@
   --carousel-height: clamp(240px, 42vw, 520px);
 }
 
+nav{
+    display: flex;
+    justify-content: space-between;
+}
+nav h1{
+    font-family: var(--font-display);
+    color: var(--charcoal);
+}
+nav ul{
+    padding: 0;
+    list-style-type: none;
+}
+nav img{
+    width: 15px;
+    height: 15px;
+    margin-top: 5px;
+}
+nav ul li{
+    display: inline-block;
+    padding: 5px 10px;
+    font-family:var(--font-body);
+    color: var(--charcoal);
+    font-weight:var(--fw-semibold);
+}
 .carousel-container{
     width: 100%;
     overflow-x: hidden;
@@ -123,4 +147,33 @@
     top: 50%;
 }
 
+main header{
+    background-color:var(--charcoal);
+    padding: 2.5em;
+    border-radius: 1.5em;
+    margin-bottom: 2em;
+}
+main header div{
+   width: 6%;
+   background-color:var(--crimson);
+   height: 6px;
+   border-radius:5px;
+   margin-bottom: 1em;
+}
+main header h2{
+    color: var(--white);
+    font-family:var(--font-display);
+    font-size:var(--fs-hero);
+    margin: 0;
+    max-width: 500px;
+    line-height:var(--lh-heading);
+    letter-spacing:var(--ls-heading);
+}
+main header p{
+    margin: 1em 0 0 0;
+    line-height:var(--lh-body);
+    font-family:var(--font-body);
+    color: white;
+    max-width: 400px;
+}
 
