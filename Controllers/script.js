@@ -65,7 +65,7 @@ const getRecipesBySearch = async (searchQuery) => {
     if (!response.ok) {
       throw new Error('Request Failed');
     }
-
+ 
     const recipeData = await response.json();
     if(recipeData.meals !== null){
     console.log(recipeData.meals);
@@ -102,7 +102,7 @@ recipeSearchInput.addEventListener('input', function () {
    // mappingSearchedRecipes(null, recipesContainer);
     return;
   }
-
+  recipesContainer.innerHTML = '<p>Searching</p>';
   debouncedGetRecipes(query);
   
 });
