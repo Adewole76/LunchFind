@@ -30,6 +30,7 @@ const nextBtn = document.querySelector('.next');
 const categorySelectBtns = document.querySelectorAll('.category-btn');
 const categorySelect = document.querySelector('.category-select');
 const carouselTrack = document.querySelector('.carousel-track');
+recipesContainer.innerHTML = `<p>Type to search for recipes</p>`
 const getCarouselRecipes = async () => {
     try{
        const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${activeFilter}`);
@@ -99,7 +100,14 @@ recipeSearchInput.addEventListener('input', function () {
   if (query === '') {
     debouncedGetRecipes.cancel();
     if (abortController) abortController.abort();
-    recipesContainer.innerHTML = `<p>Type to search for recipes</p>`
+    recipesContainer.innerHTML = `<div class="nothing-typed-state">
+   <div>
+    <div>
+     <img src="" alt="search-icon">
+    </div>
+    <p>Type to search for recipes</p>
+  </div>
+    </div>`
    // mappingSearchedRecipes(null, recipesContainer);
     return;
   }
