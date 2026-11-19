@@ -235,8 +235,9 @@ main header p{
 .recipes-container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 2em;
-    row-gap: 2em;
+    gap: 2em;
+    margin: 1em 0;
+    width: 100%;
 }
 .recipe{
     position: relative;
@@ -278,3 +279,55 @@ main header p{
     background-color:var(--gray-100);
 }
 
+/*Nothing typed yet empty state*/
+.nothing-typed-state{
+    background-color:var(--gray-100);
+    text-align: center;
+    padding: 2em;
+    border: 1px solid var(--gray-200);
+    border-radius: 1em;
+}
+.nothing-typed-state img{
+    width: 40px;
+    height: 40px;
+}
+.nothing-typed-state .image-div{
+    background-color: white;
+    display: inline-block;
+    padding: 1em 1.3em;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.nothing-typed-state h3{
+    font-family:var(--font-display);
+    font-size: 1.5rem;
+    color:var(--charcoal);
+}
+.nothing-typed-state p{
+    font-family:var(--font-body);
+    color:var(--charcoal);
+}
+
+
+/* No results empty state */
+.no-results{
+    background-color:var(--gray-100);
+    text-align: center;
+    padding: 2em;
+    border: 1px solid var(--gray-200);
+    border-radius: 1em;
+}
+.no-results img{
+    width: 40px;
+    height: 40px;
+}
+.no-results h3{
+    font-family:var(--font-display);
+    font-size: 1.5rem;
+    color:var(--charcoal);
+}
+.no-results p{
+    font-family:var(--font-body);
+    color:var(--charcoal);
+}

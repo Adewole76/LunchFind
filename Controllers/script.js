@@ -30,7 +30,16 @@ const nextBtn = document.querySelector('.next');
 const categorySelectBtns = document.querySelectorAll('.category-btn');
 const categorySelect = document.querySelector('.category-select');
 const carouselTrack = document.querySelector('.carousel-track');
-recipesContainer.innerHTML = `<p>Type to search for recipes</p>`
+recipesContainer.innerHTML = `<div class="nothing-typed-state">
+    <div>
+      <div class="image-div">
+      <img src="/image/search.png" alt="search-icon">
+      </div>
+      <h3>Search for a recipe</h3>
+      <p>Type a dish or an ingrdient like "rice", "chicken", or "soup" to see the recipes here</p>
+    </div>
+    </div>`;
+recipesContainer.style.display = 'block';
 const getCarouselRecipes = async () => {
     try{
        const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${activeFilter}`);
@@ -72,6 +81,10 @@ const getRecipesBySearch = async (searchQuery) => {
     if(recipeData.meals !== null){
     console.log(recipeData.meals);
     mappingSearchedRecipes(recipeData.meals, recipesContainer);
+    recipesContainer.style.display = 'grid';
+    recipesContainer.style.gridTemplateColumns = '1fr 1fr 1fr';
+    recipesContainer.style.columnGap = "2em";
+    recipesContainer.style.rowGap = "2em"
     const heartImages = document.querySelectorAll('.favourite-images');
     for(let i = 0; i < heartImages.length; i++){
     if(favourites.some(item => item.idMeal === heartImages[i].dataset.imageId)){
@@ -79,7 +92,14 @@ const getRecipesBySearch = async (searchQuery) => {
     }
     }
     }else{
-      recipesContainer.innerHTML = `<p>No results for your search</p>`
+      recipesContainer.innerHTML = `<div class="no-results">
+      <div>
+        <p>No matches</p>
+        <img src="/image/searched.png" alt="search-icon">
+        <h3>No recipes found</h3>
+        <p>Try a different word, like "rice" or "soup"</p>
+      </div>
+      </div>`
     }
     resultforCall = recipeData.meals
     return recipeData.meals;
@@ -101,17 +121,20 @@ recipeSearchInput.addEventListener('input', function () {
     debouncedGetRecipes.cancel();
     if (abortController) abortController.abort();
     recipesContainer.innerHTML = `<div class="nothing-typed-state">
-   <div>
     <div>
-     <img src="" alt="search-icon">
+      <div class="image-div">
+      <img src="/image/search.png" alt="search-icon">
+      </div>
+      <h3>Search for a recipe</h3>
+      <p>Type a dish or an ingrdient like "rice", "chicken", or "soup" to see the recipes here</p>
     </div>
-    <p>Type to search for recipes</p>
-  </div>
     </div>`
+    recipesContainer.style.display = "block";
    // mappingSearchedRecipes(null, recipesContainer);
     return;
   }
   recipesContainer.innerHTML = '<p>Searching</p>';
+  recipesContainer.style.display = 'block';
   debouncedGetRecipes(query);
   
 });
