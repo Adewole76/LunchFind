@@ -133,7 +133,28 @@ recipeSearchInput.addEventListener('input', function () {
    // mappingSearchedRecipes(null, recipesContainer);
     return;
   }
-  recipesContainer.innerHTML = '<p>Searching</p>';
+  recipesContainer.innerHTML = `<div class="loading-state">
+  <p>LOADING</p>
+  <section>
+    <div class="loading-skeleton">
+      <div class="biggest"></div>
+      <div class="smallest"></div>
+      <div class="medium"></div>
+    </div>
+
+    <div class="loading-skeleton">
+      <div class="biggest"></div>
+      <div class="smallest"></div>
+      <div class="medium"></div>
+    </div>
+
+    <div class="loading-skeleton">
+      <div class="biggest"></div>
+      <div class="smallest"></div>
+      <div class="medium"></div>
+    </div>
+  </section>
+  </div>`;
   recipesContainer.style.display = 'block';
   debouncedGetRecipes(query);
   
