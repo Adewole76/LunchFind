@@ -76,6 +76,9 @@
   --carousel-height: clamp(240px, 42vw, 400px);
 }
 
+.hidden{
+    display: none;
+}
 nav{
     display: flex;
     justify-content: space-between;
@@ -376,4 +379,14 @@ main header p{
     width: 50%;
     height: 40px;
     border-radius: 1.5em;
+}
+.recipe-cat-cty{
+    font-family:var(--font-ui);
+    color:var(--crimson);
+}
+.recipe-mealName{
+    font-family:var(--font-display);
+    color:var(--charcoal);
+    font-size: 1.5rem;
+    margin: 5px 0;
 }

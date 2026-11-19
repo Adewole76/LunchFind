@@ -30,6 +30,7 @@ const nextBtn = document.querySelector('.next');
 const categorySelectBtns = document.querySelectorAll('.category-btn');
 const categorySelect = document.querySelector('.category-select');
 const carouselTrack = document.querySelector('.carousel-track');
+const recipeModal = document.querySelector('.recipe-modal');
 recipesContainer.innerHTML = `<div class="nothing-typed-state">
     <div>
       <div class="image-div">
@@ -178,6 +179,12 @@ recipesContainer.addEventListener('click', (event) => {
       favourites.push(particularRecipeObject)
       saveItems('favourites', favourites);
     }
+  }else if(event.target.closest('.recipe')){
+    const particularRecipe = event.target.closest('.recipe');
+    const particularRecipeId = particularRecipe.dataset.userId;
+    console.log(particularRecipe, particularRecipeId);
+    const particularRecipeObject = resultforCall.find(item => item.idMeal === particularRecipeId);
+    console.log(particularRecipeObject);
   }
 });
 

@@ -21,8 +21,8 @@ export const mappingSearchedRecipes = (arr, container) => {
         <img src="${item.strMealThumb}"class="recipe-image" alt="recipe-thumbnail">
         </div>
         <section>
-          <p>${item.strCategory}.${item.strCountry}<p>
-          <p>${item.strMeal}</p>
+          <p class="recipe-cat-cty">${item.strCategory}.${item.strCountry}<p>
+          <p class="recipe-mealName">${item.strMeal}</p>
         </section>
         <button class="favourite-btn" data-button-id="${item.idMeal}"><img class="favourite-images" src="/image/heart.png" data-image-id="${item.idMeal}"></button>
         </div>`
