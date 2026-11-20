@@ -185,6 +185,44 @@ recipesContainer.addEventListener('click', (event) => {
     console.log(particularRecipe, particularRecipeId);
     const particularRecipeObject = resultforCall.find(item => item.idMeal === particularRecipeId);
     console.log(particularRecipeObject);
+    recipeModal.classList.remove('hidden');
+    recipeModal.innerHTML = `
+    <section class="modal-img-cont">
+      <img class="modal-img" src="${particularRecipeObject.strMealThumb}" alt="modal-image">
+    </section>
+    <section>
+     <header>
+     <button class="close-modal-btn">close</button>
+     </header>
+     <section>
+     <p>${particularRecipeObject.strCategory}.${particularRecipeObject.strCountry}</p>
+     <h3>${particularRecipeObject.strMeal}</h3>
+     <p>Ingredients</p>
+     <ul>
+      ${particularRecipeObject.strIngredient1?`<li>${particularRecipeObject.strIngredient1} ${particularRecipeObject.strMeasure1}</li>`:''}
+      ${particularRecipeObject.strIngredient2?`<li>${particularRecipeObject.strIngredient2} ${particularRecipeObject.strMeasure2}</li>`:''}
+      ${particularRecipeObject.strIngredient3?`<li>${particularRecipeObject.strIngredient3} ${particularRecipeObject.strMeasure3}</li>`:''}
+      ${particularRecipeObject.strIngredient4?`<li>${particularRecipeObject.strIngredient4} ${particularRecipeObject.strMeasure4}</li>`:''}
+      ${particularRecipeObject.strIngredient5?`<li>${particularRecipeObject.strIngredient5} ${particularRecipeObject.strMeasure5}</li>`:''}
+      ${particularRecipeObject.strIngredient6?`<li>${particularRecipeObject.strIngredient6} ${particularRecipeObject.strMeasure6}</li>`:''}
+      ${particularRecipeObject.strIngredient7?`<li>${particularRecipeObject.strIngredient7} ${particularRecipeObject.strMeasure7}</li>`:''}
+      ${particularRecipeObject.strIngredient8?`<li>${particularRecipeObject.strIngredient8} ${particularRecipeObject.strMeasure8}</li>`:''}
+      ${particularRecipeObject.strIngredient9?`<li>${particularRecipeObject.strIngredient9} ${particularRecipeObject.strMeasure9}</li>`:''}
+      ${particularRecipeObject.strIngredient10?`<li>${particularRecipeObject.strIngredient10} ${particularRecipeObject.strMeasure10}</li>`:''}
+      ${particularRecipeObject.strIngredient11?`<li>${particularRecipeObject.strIngredient11} ${particularRecipeObject.strMeasure11}</li>`:''}
+      ${particularRecipeObject.strIngredient12?`<li>${particularRecipeObject.strIngredient12} ${particularRecipeObject.strMeasure12}</li>`:''}
+      ${particularRecipeObject.strIngredient13?`<li>${particularRecipeObject.strIngredient13} ${particularRecipeObject.strMeasure13}</li>`:''}
+      ${particularRecipeObject.strIngredient14?`<li>${particularRecipeObject.strIngredient14} ${particularRecipeObject.strMeasure14}</li>`:''}
+      ${particularRecipeObject.strIngredient15?`<li>${particularRecipeObject.strIngredient15} ${particularRecipeObject.strMeasure15}</li>`:''}
+      ${particularRecipeObject.strIngredient16?`<li>${particularRecipeObject.strIngredient16} ${particularRecipeObject.strMeasure16}</li>`:''}
+      ${particularRecipeObject.strIngredient17?`<li>${particularRecipeObject.strIngredient17} ${particularRecipeObject.strMeasure17}</li>`:''}
+      ${particularRecipeObject.strIngredient18?`<li>${particularRecipeObject.strIngredient18} ${particularRecipeObject.strMeasure18}</li>`:''}
+      ${particularRecipeObject.strIngredient19?`<li>${particularRecipeObject.strIngredient19} ${particularRecipeObject.strMeasure19}</li>`:''}
+      ${particularRecipeObject.strIngredient20?`<li>${particularRecipeObject.strIngredient20} ${particularRecipeObject.strMeasure20}</li>`:''}
+     <ul>
+     </section>
+
+    </section>`
   }
 });
 
