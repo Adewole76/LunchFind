@@ -169,6 +169,7 @@ nav ul li{
     font-weight:var(--fw-bold);
     background-color: white;
     color:var(--charcoal);
+    z-index: 100;
 }
 .previous{
     position: absolute;
@@ -181,6 +182,7 @@ nav ul li{
     font-weight:var(--fw-bold);
     background-color: white;
     color:var(--charcoal);
+    z-index: 100;
 }
 
 main header{
@@ -399,7 +401,42 @@ main header p{
    top: 0;
    left: 0;
    right: 0; 
+   background-color: white;
    grid-template-columns: 1fr 2fr;
+   z-index: 150;
+}
+.recipe-modal .category-count{
+   font-family:var(--font-ui);
+   color:var(--crimson); 
+   margin: 0 0 0 0;
+}
+.recipe-modal h3{
+    font-size: 3rem;
+    margin: 2px 0;
+}
+.recipe-modal h4{
+   font-size: 1.5rem;
+}
+.recipe-modal h3, h4{
+    font-family:var(--font-display);
+    color:var(--charcoal);
+}
+.recipe-modal header{
+    text-align: right;
+}
+.recipe-modal .recipe-details{
+    padding: 1em;
+    overflow-y: scroll;
+}
+.close-modal-btn{
+    background-color: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 50%;
+    padding: 10px 12px;
+}
+.close-modal-btn img{
+    width: 20px;
+    height: 20px;
 }
 .modal-img-cont .modal-img{
     height: 100vh;

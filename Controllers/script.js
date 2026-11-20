@@ -31,6 +31,7 @@ const categorySelectBtns = document.querySelectorAll('.category-btn');
 const categorySelect = document.querySelector('.category-select');
 const carouselTrack = document.querySelector('.carousel-track');
 const recipeModal = document.querySelector('.recipe-modal');
+const closeModalBtn = document.querySelector('.close-modal-btn')
 recipesContainer.innerHTML = `<div class="nothing-typed-state">
     <div>
       <div class="image-div">
@@ -193,12 +194,12 @@ recipesContainer.addEventListener('click', (event) => {
     </section>
     <section>
      <header>
-     <button class="close-modal-btn">close</button>
+     <button class="close-modal-btn"><img src="/image/close (4).png"></button>
      </header>
-     <section>
-     <p>${particularRecipeObject.strCategory}.${particularRecipeObject.strCountry}</p>
+     <section class="recipe-details">
+     <p class="category-count">${particularRecipeObject.strCategory}.${particularRecipeObject.strCountry}</p>
      <h3>${particularRecipeObject.strMeal}</h3>
-     <p>Ingredients</p>
+     <h4>Ingredients</h4>
      <ul>
       ${particularRecipeObject.strIngredient1?`<li>${particularRecipeObject.strIngredient1} &rArr; ${particularRecipeObject.strMeasure1}</li>`:''}
       ${particularRecipeObject.strIngredient2?`<li>${particularRecipeObject.strIngredient2} &rArr; ${particularRecipeObject.strMeasure2}</li>`:''}
@@ -227,6 +228,9 @@ recipesContainer.addEventListener('click', (event) => {
      </section>
 
     </section>`
+    closeModalBtn.addEventListener('click', function(){
+      recipeModal.classList.add('hidden');
+    })
   }
 });
 
@@ -237,7 +241,7 @@ categorySelect.addEventListener('click', async (event) => {
     const particularCategoryText = event.target.closest('.category-btn').textContent;
     console.log(particularCategory, particularCategoryText);
     activeFilter = particularCategoryText;
-    particularCategory.classList.add('active-category');
+    particularCategory.classList.add('active-category' );
     for(let i = 0; i < categorySelectBtns.length; i++){
       if(categorySelectBtns[i].textContent !== particularCategoryText){
         categorySelectBtns[i].classList.remove('active-category');
