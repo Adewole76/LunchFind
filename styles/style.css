@@ -77,21 +77,30 @@
 }
 body{
     position: relative;
+    padding: 4em 2em 0 2em;
 }
 .hidden{
     display: none !important;
 }
 nav{
     display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
     justify-content: space-between;
+    background-color: white;
+    padding: 8px 2em;
 }
 nav h1{
     font-family: var(--font-display);
     color: var(--charcoal);
+    margin: 5px 0;
 }
 nav ul{
     padding: 0;
     list-style-type: none;
+    margin: 0;
 }
 nav img{
     width: 15px;
@@ -104,6 +113,19 @@ nav ul li{
     font-family:var(--font-body);
     color: var(--charcoal);
     font-weight:var(--fw-semibold);
+}
+.sidebar-toggleOn{
+    position: absolute;
+    right: 0;
+    top: 8px;
+    right: 8px;
+    background-color: transparent;
+    border: none;
+    display: none;
+}
+.sidebar-toggleOn img{
+    width: 20px;
+    height: 20px;
 }
 .carousel-container{
     width: 100%;
