@@ -223,9 +223,9 @@ recipesContainer.addEventListener('click', (event) => {
      </ul>
 
      <h4>Method</h4>
-     <article>
-     ${particularRecipeObject.strInstructions}
-     </article>
+     <section class="instructions-container">
+     <p class="instructions">${particularRecipeObject.strInstructions}</p>
+     </section>
      </section>
 
     </section>`;

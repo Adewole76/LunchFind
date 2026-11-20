@@ -402,8 +402,19 @@ main header p{
    left: 0;
    right: 0; 
    background-color: white;
-   grid-template-columns: 1fr 2fr;
+   grid-template-columns: 1fr 1fr;
    z-index: 150;
+   height: 100vh;
+   overflow-y: auto;
+}
+.recipe-modal ul{
+  column-count: 3;
+  column-gap: 2rem;
+}
+.recipe-modal ul li{
+    break-inside: avoid;
+    font-family:var(--font-body);
+    color:var(--charcoal);
 }
 .recipe-modal .hidden{
     display: none;
@@ -413,12 +424,18 @@ main header p{
    color:var(--crimson); 
    margin: 0 0 0 0;
 }
+.instructions-container p{
+   margin: 0;
+   font-family:var(--font-body);
+   color:#2F0505;
+}
 .recipe-modal h3{
     font-size: 3rem;
     margin: 2px 0;
 }
 .recipe-modal h4{
    font-size: 1.5rem;
+   margin-bottom: 0;
 }
 .recipe-modal h3, h4{
     font-family:var(--font-display);
@@ -428,8 +445,7 @@ main header p{
     text-align: right;
 }
 .recipe-modal .recipe-details{
-    padding: 1em;
-    overflow-y: scroll;
+    padding: 1em 0 0 1em;
 }
 .close-modal-btn{
     background-color: white;
@@ -442,5 +458,7 @@ main header p{
     height: 20px;
 }
 .modal-img-cont .modal-img{
-    height: 100vh;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
 }
