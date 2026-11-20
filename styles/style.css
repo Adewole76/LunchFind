@@ -75,7 +75,9 @@
   --tap-target: 44px;                  /* minimum size for buttons, chips, hearts */
   --carousel-height: clamp(240px, 42vw, 400px);
 }
-
+body{
+    position: relative;
+}
 .hidden{
     display: none;
 }
@@ -391,3 +393,14 @@ main header p{
     margin: 5px 0;
 }
 
+.recipe-modal{
+   display: grid;
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0; 
+   grid-template-columns: 1fr 2fr;
+}
+.modal-img-cont .modal-img{
+    height: 100vh;
+}
