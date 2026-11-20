@@ -79,7 +79,7 @@ body{
     position: relative;
 }
 .hidden{
-    display: none;
+    display: none !important;
 }
 nav{
     display: flex;
@@ -404,6 +404,9 @@ main header p{
    background-color: white;
    grid-template-columns: 1fr 2fr;
    z-index: 150;
+}
+.recipe-modal .hidden{
+    display: none;
 }
 .recipe-modal .category-count{
    font-family:var(--font-ui);

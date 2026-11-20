@@ -31,7 +31,6 @@ const categorySelectBtns = document.querySelectorAll('.category-btn');
 const categorySelect = document.querySelector('.category-select');
 const carouselTrack = document.querySelector('.carousel-track');
 const recipeModal = document.querySelector('.recipe-modal');
-const closeModalBtn = document.querySelector('.close-modal-btn')
 recipesContainer.innerHTML = `<div class="nothing-typed-state">
     <div>
       <div class="image-div">
@@ -194,42 +193,46 @@ recipesContainer.addEventListener('click', (event) => {
     </section>
     <section>
      <header>
-     <button class="close-modal-btn"><img src="/image/close (4).png"></button>
+     <button class="close-modal-btn"><img alt="close-button-icon" src="/image/close (4).png"></button>
      </header>
      <section class="recipe-details">
      <p class="category-count">${particularRecipeObject.strCategory}.${particularRecipeObject.strCountry}</p>
      <h3>${particularRecipeObject.strMeal}</h3>
      <h4>Ingredients</h4>
      <ul>
-      ${particularRecipeObject.strIngredient1?`<li>${particularRecipeObject.strIngredient1} &rArr; ${particularRecipeObject.strMeasure1}</li>`:''}
-      ${particularRecipeObject.strIngredient2?`<li>${particularRecipeObject.strIngredient2} &rArr; ${particularRecipeObject.strMeasure2}</li>`:''}
-      ${particularRecipeObject.strIngredient3?`<li>${particularRecipeObject.strIngredient3} &rArr; ${particularRecipeObject.strMeasure3}</li>`:''}
-      ${particularRecipeObject.strIngredient4?`<li>${particularRecipeObject.strIngredient4} &rArr; ${particularRecipeObject.strMeasure4}</li>`:''}
-      ${particularRecipeObject.strIngredient5?`<li>${particularRecipeObject.strIngredient5} &rArr; ${particularRecipeObject.strMeasure5}</li>`:''}
-      ${particularRecipeObject.strIngredient6?`<li>${particularRecipeObject.strIngredient6} &rArr; ${particularRecipeObject.strMeasure6}</li>`:''}
-      ${particularRecipeObject.strIngredient7?`<li>${particularRecipeObject.strIngredient7} &rArr; ${particularRecipeObject.strMeasure7}</li>`:''}
-      ${particularRecipeObject.strIngredient8?`<li>${particularRecipeObject.strIngredient8} &rArr; ${particularRecipeObject.strMeasure8}</li>`:''}
-      ${particularRecipeObject.strIngredient9?`<li>${particularRecipeObject.strIngredient9} &rArr; ${particularRecipeObject.strMeasure9}</li>`:''}
-      ${particularRecipeObject.strIngredient10?`<li>${particularRecipeObject.strIngredient10} &rArr; ${particularRecipeObject.strMeasure10}</li>`:''}
-      ${particularRecipeObject.strIngredient11?`<li>${particularRecipeObject.strIngredient11} &rArr; ${particularRecipeObject.strMeasure11}</li>`:''}
-      ${particularRecipeObject.strIngredient12?`<li>${particularRecipeObject.strIngredient12} &rArr; ${particularRecipeObject.strMeasure12}</li>`:''}
-      ${particularRecipeObject.strIngredient13?`<li>${particularRecipeObject.strIngredient13} &rArr; ${particularRecipeObject.strMeasure13}</li>`:''}
-      ${particularRecipeObject.strIngredient14?`<li>${particularRecipeObject.strIngredient14} &rArr; ${particularRecipeObject.strMeasure14}</li>`:''}
-      ${particularRecipeObject.strIngredient15?`<li>${particularRecipeObject.strIngredient15} &rArr; ${particularRecipeObject.strMeasure15}</li>`:''}
-      ${particularRecipeObject.strIngredient16?`<li>${particularRecipeObject.strIngredient16} &rArr; ${particularRecipeObject.strMeasure16}</li>`:''}
-      ${particularRecipeObject.strIngredient17?`<li>${particularRecipeObject.strIngredient17} &rArr; ${particularRecipeObject.strMeasure17}</li>`:''}
-      ${particularRecipeObject.strIngredient18?`<li>${particularRecipeObject.strIngredient18} &rArr; ${particularRecipeObject.strMeasure18}</li>`:''}
-      ${particularRecipeObject.strIngredient19?`<li>${particularRecipeObject.strIngredient19} &rArr; ${particularRecipeObject.strMeasure19}</li>`:''}
-      ${particularRecipeObject.strIngredient20?`<li>${particularRecipeObject.strIngredient20} &rArr; ${particularRecipeObject.strMeasure20}</li>`:''}
+         ${particularRecipeObject.strIngredient1?`<li>${particularRecipeObject.strIngredient1} &rArr; ${particularRecipeObject.strMeasure1}</li>`:''}
+         ${particularRecipeObject.strIngredient2?`<li>${particularRecipeObject.strIngredient2} &rArr; ${particularRecipeObject.strMeasure2}</li>`:''}
+         ${particularRecipeObject.strIngredient3?`<li>${particularRecipeObject.strIngredient3} &rArr; ${particularRecipeObject.strMeasure3}</li>`:''}
+         ${particularRecipeObject.strIngredient4?`<li>${particularRecipeObject.strIngredient4} &rArr; ${particularRecipeObject.strMeasure4}</li>`:''}
+         ${particularRecipeObject.strIngredient5?`<li>${particularRecipeObject.strIngredient5} &rArr; ${particularRecipeObject.strMeasure5}</li>`:''}
+         ${particularRecipeObject.strIngredient6?`<li>${particularRecipeObject.strIngredient6} &rArr; ${particularRecipeObject.strMeasure6}</li>`:''}
+         ${particularRecipeObject.strIngredient7?`<li>${particularRecipeObject.strIngredient7} &rArr; ${particularRecipeObject.strMeasure7}</li>`:''}
+         ${particularRecipeObject.strIngredient8?`<li>${particularRecipeObject.strIngredient8} &rArr; ${particularRecipeObject.strMeasure8}</li>`:''}
+         ${particularRecipeObject.strIngredient9?`<li>${particularRecipeObject.strIngredient9} &rArr; ${particularRecipeObject.strMeasure9}</li>`:''}
+         ${particularRecipeObject.strIngredient10?`<li>${particularRecipeObject.strIngredient10} &rArr; ${particularRecipeObject.strMeasure10}</li>`:''}
+         ${particularRecipeObject.strIngredient11?`<li>${particularRecipeObject.strIngredient11} &rArr; ${particularRecipeObject.strMeasure11}</li>`:''}
+         ${particularRecipeObject.strIngredient12?`<li>${particularRecipeObject.strIngredient12} &rArr; ${particularRecipeObject.strMeasure12}</li>`:''}
+         ${particularRecipeObject.strIngredient13?`<li>${particularRecipeObject.strIngredient13} &rArr; ${particularRecipeObject.strMeasure13}</li>`:''}
+         ${particularRecipeObject.strIngredient14?`<li>${particularRecipeObject.strIngredient14} &rArr; ${particularRecipeObject.strMeasure14}</li>`:''}
+         ${particularRecipeObject.strIngredient15?`<li>${particularRecipeObject.strIngredient15} &rArr; ${particularRecipeObject.strMeasure15}</li>`:''}
+         ${particularRecipeObject.strIngredient16?`<li>${particularRecipeObject.strIngredient16} &rArr; ${particularRecipeObject.strMeasure16}</li>`:''}
+         ${particularRecipeObject.strIngredient17?`<li>${particularRecipeObject.strIngredient17} &rArr; ${particularRecipeObject.strMeasure17}</li>`:''}
+         ${particularRecipeObject.strIngredient18?`<li>${particularRecipeObject.strIngredient18} &rArr; ${particularRecipeObject.strMeasure18}</li>`:''}
+         ${particularRecipeObject.strIngredient19?`<li>${particularRecipeObject.strIngredient19} &rArr; ${particularRecipeObject.strMeasure19}</li>`:''}
+         ${particularRecipeObject.strIngredient20?`<li>${particularRecipeObject.strIngredient20} &rArr; ${particularRecipeObject.strMeasure20}</li>`:''}
      </ul>
 
      <h4>Method</h4>
-     <article>${particularRecipeObject.strInstructions}</article>
+     <article>
+     ${particularRecipeObject.strInstructions}
+     </article>
      </section>
 
-    </section>`
+    </section>`;
+    const closeModalBtn = document.querySelector('.close-modal-btn')
     closeModalBtn.addEventListener('click', function(){
       recipeModal.classList.add('hidden');
+      console.log('i am working')
     })
   }
 });
