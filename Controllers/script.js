@@ -28,6 +28,7 @@ const recipesContainer = document.querySelector('.recipes-container');
 const prevBtn = document.querySelector('.previous');
 const nextBtn = document.querySelector('.next');
 const categorySelectBtns = document.querySelectorAll('.category-btn');
+const carouselContainer = document.querySelector('.carousel-container');
 const categorySelect = document.querySelector('.category-select');
 const carouselTrack = document.querySelector('.carousel-track');
 const recipeModal = document.querySelector('.recipe-modal');
@@ -56,9 +57,9 @@ const getCarouselRecipes = async () => {
        return recipes;
     }catch(error){
       console.log(error);
-      carouselTrack.innerHTML = `There was an erro loading recipes check your connection and reload the page`
+      carouselContainer.innerHTML = `<p>There was an erro loading recipes check your connection and reload the page</p>`
     }
-    
+
 }
 getCarouselRecipes();
 
