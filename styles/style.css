@@ -485,3 +485,25 @@ main header p{
     object-fit: cover;
     width: 100%;
 }
+
+/* offline error state */
+.offline-empty-state{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--gray-100);
+    padding: 2em;
+    height: 350px;
+}
+.offline-empty-state div{
+    text-align: center;
+}
+.offline-empty-state .error-tag{
+    font-family:var(--font-ui);
+    color:var(--crimson);
+}
+.offline-empty-state h3{
+    font-family:var(--display);
+    color:var(--charcoal);
+    font-size: 2rem;
+}

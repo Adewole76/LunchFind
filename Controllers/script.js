@@ -51,13 +51,21 @@ const getCarouselRecipes = async () => {
        }
     
     const recipes = await response.json();
+    carouselContainer.style.overflowX = 'hidden'
     const filteredCarouselRecipes = recipes.meals.filter(recipe => recipes.meals.indexOf(recipe) < 4);
     console.log(filteredCarouselRecipes);
     mappingCarouselDisplays(filteredCarouselRecipes, carouselTrack);
        return recipes;
     }catch(error){
       console.log(error);
-      carouselContainer.innerHTML = `<p>There was an erro loading recipes check your connection and reload the page</p>`
+      carouselContainer.innerHTML = `<section class="offline-empty-state">
+      <div>
+          <p class="error-tag">REQUEST FAILED</p>
+          <h3>Couldn't load recipes</h3>
+          <p class="error-instruction">Check your connection and try again</p>
+      </div>
+      </section>`
+      carouselContainer.style.overflow = 'hidden';
     }
 
 }
