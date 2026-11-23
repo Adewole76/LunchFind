@@ -493,6 +493,7 @@ main header p{
     align-items: center;
     background-color: var(--gray-100);
     padding: 2em;
+    border-radius: 2em;
     height: 350px;
 }
 .offline-empty-state div{
@@ -506,4 +507,8 @@ main header p{
     font-family:var(--display);
     color:var(--charcoal);
     font-size: 2rem;
+}
+.offline-empty-state .error-instruction{
+ font-family:var(--font-body);
+ color:var(--charcoal);
 }

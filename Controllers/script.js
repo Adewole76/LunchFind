@@ -120,6 +120,13 @@ const getRecipesBySearch = async (searchQuery) => {
   } catch (error) {
     if (error.name !== 'AbortError') {
       console.error(error);
+      recipesContainer.innerHTML = `<section class="offline-empty-state">
+      <div>
+          <p class="error-tag">REQUEST FAILED</p>
+          <h3>Couldn't load recipes</h3>
+          <p class="error-instruction">Check your connection and try again</p>
+      </div>
+      </section>`
     }
   }
 };
