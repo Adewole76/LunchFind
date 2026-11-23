@@ -32,7 +32,15 @@ const carouselContainer = document.querySelector('.carousel-container');
 const categorySelect = document.querySelector('.category-select');
 const carouselTrack = document.querySelector('.carousel-track');
 const recipeModal = document.querySelector('.recipe-modal');
+const sidebar = document.querySelector('.sidebar'); 
+const sidebarCloseBtn = document.querySelector('.sidebar-close-btn');
 const sidebarToggleOn = document.querySelector('.sidebar-toggleOn');
+sidebarToggleOn.addEventListener('click', function(){
+  sidebar.classList.add('active');
+});
+sidebarCloseBtn.addEventListener('click', function(){
+  sidebar.classList.remove('active');
+})
 recipesContainer.innerHTML = `<div class="nothing-typed-state">
     <div>
       <div class="image-div">

@@ -82,6 +82,38 @@ body{
 .hidden{
     display: none !important;
 }
+.sidebar{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 250px;
+    transform: translateX(-100%);
+    background-color: white;
+    z-index: 1600;
+    padding: 2em 0;
+    transition: transform 0.3s ease-in;
+}
+.sidebar.active{
+    transform: translateX(0%);
+}
+.sidebar h4{
+    margin: 0;
+    font-family:var(--font-display);
+}
+.sidebar ul {
+    padding: 0;
+    list-style-type: none;
+    font-family:var(--font-body);
+}
+.sidebar img{
+    width: 20px;
+    height: 20px;
+}
+.sidebar section{
+    display: flex;
+    justify-content: space-between;
+}
 nav{
     display: flex;
     position: fixed;
@@ -122,8 +154,8 @@ nav ul li a{
 .sidebar-toggleOn{
     position: absolute;
     right: 0;
-    top: 8px;
-    right: 8px;
+    top: 13px;
+    right: 32px;
     background-color: transparent;
     border: none;
     display: none;
@@ -515,4 +547,38 @@ main header p{
 .offline-empty-state .error-instruction{
  font-family:var(--font-body);
  color:var(--charcoal);
+}
+
+@media(max-width: 906px){
+    .recipes-container{
+    grid-template-columns: 1fr 1fr !important;
+    }
+}
+
+@media(max-width: 616px){
+    .recipes-container{
+        grid-template-columns: 1fr !important;
+    }
+}
+@media(max-width: 440px){
+    body{
+        padding: 4em 1em 0 1em;
+    }
+    nav ul li{
+        display: none;
+    }
+    .sidebar-toggleOn{
+        display: block;
+        right: 16px;
+    }
+}
+
+@media(max-width: 350px){
+    body{
+        padding: 4em 8px 0 8px;
+    }
+     .sidebar-toggleOn{
+        display: block;
+        right: 8pxpx;
+    }
 }
