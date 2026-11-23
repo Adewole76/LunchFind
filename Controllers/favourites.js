@@ -1,7 +1,7 @@
 'use strict'
 import { mappingFavouritesArray } from "../view/favourites-view.js";
 import { favourites } from "../model.js";
-import { filterFavouritesArray } from "../model.js"
+import { filterFavouritesArray } from "../model.js";
 
 const recipeContainer = document.querySelector('.recipes-container');
 const favouritesNumber = document.querySelector('.favourites-number');
@@ -19,4 +19,4 @@ recipeContainer.addEventListener('click', function(event){
       mappingFavouritesArray(favourites, recipeContainer);
       favouritesNumber.innerHTML = `${favourites.length} SAVED RECIPES`;
     }
-})
+});

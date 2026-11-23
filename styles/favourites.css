@@ -229,3 +229,40 @@ main header p{
   font-family:var(--font-ui);
   color:var(--crimson);
 }
+.No-favourites-empty-state{
+    background-color:var(--gray-100);
+    text-align: center;
+    padding: 2em;
+    border: 1px solid var(--gray-200);
+    border-radius: 1em;
+}
+.No-favourites-empty-state img{
+    width: 40px;
+    height: 40px;
+}
+.No-favourites-empty-state div{
+    background-color: white;
+    display: inline-block;
+    padding: 1em 1.3em;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.No-favourites-empty-state h3{
+    font-family:var(--font-display);
+    font-size: 1.5rem;
+    color:var(--charcoal);
+}
+.No-favourites-empty-state p{
+    font-family:var(--font-body);
+    color:var(--charcoal);
+}
+.No-favourites-empty-state button{
+  background-color:var(--crimson);
+    padding: 1em;
+    border: none;
+    border-radius: 2em;
+    font-weight:var(--fw-regular);
+    font-family:var(--font-ui);
+    color:var(--white);
+}
