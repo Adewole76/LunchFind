@@ -10,6 +10,7 @@ const sidebar = document.querySelector('.sidebar');
 const sidebarCloseBtn = document.querySelector('.sidebar-close-btn');
 const sidebarToggleOn = document.querySelector('.sidebar-toggleOn');
 const sidebarOverlay = document.querySelector('.overlay')
+const sidebarH = document.querySelector('.sidebar-h');
 sidebarToggleOn.addEventListener('click', function(){
   sidebar.classList.add('active');
   sidebarOverlay.classList.remove('hidden');
