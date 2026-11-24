@@ -171,6 +171,16 @@ nav ul li a{
     border-radius: 1em;
     height:var(--carousel-height);
 }
+.carousel-container .offline-empty-state{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--gray-100);
+    padding: 2em;
+    border-radius: 2em;
+    height: 400px;
+}
+
 .carousel-track{
     width: 100%;
     display: flex;
@@ -469,6 +479,7 @@ main header p{
 .recipe-modal ul{
   column-count: 3;
   column-gap: 2rem;
+  padding: 0 0 0 1em;
 }
 .recipe-modal ul li{
     break-inside: avoid;
@@ -511,6 +522,9 @@ main header p{
     border: 1px solid var(--gray-200);
     border-radius: 50%;
     padding: 10px 12px;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 .close-modal-btn img{
     width: 20px;
@@ -523,14 +537,13 @@ main header p{
 }
 
 /* offline error state */
-.offline-empty-state{
+.recipesContainer .offline-empty-state{
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--gray-100);
     padding: 2em;
     border-radius: 2em;
-    height: 350px;
 }
 .offline-empty-state div{
     text-align: center;
@@ -553,11 +566,18 @@ main header p{
     .recipes-container{
     grid-template-columns: 1fr 1fr !important;
     }
+       .recipe-modal{
+        grid-template-columns: 1fr;
+        grid-template-rows: 400px 2fr;
+    }
 }
 
 @media(max-width: 616px){
     .recipes-container{
         grid-template-columns: 1fr !important;
+    }
+    .recipe-modal ul{
+        column-count: 2;
     }
 }
 @media(max-width: 440px){
@@ -570,6 +590,9 @@ main header p{
     .sidebar-toggleOn{
         display: block;
         right: 16px;
+    }
+    .recipe-modal h3{
+        font-size: 2rem;
     }
 }
 
