@@ -3,7 +3,7 @@ export const mappingFavouritesArray = (arr, container) => {
     const mappedFavouritesItems = arr.map(item => {
         return `<div class="recipe" data-user-id = ${item.idMeal}>
         <div class=img-div>
-        <img src="${item.strMealThumb}"class="recipe-image" alt="recipe-thumbnail">
+        <img src="${item.strMealThumb?item.strMealThumb:`/image/gallery.png`}"class="recipe-image" alt="recipe-thumbnail">
         </div>
         <section>
           <p class="recipe-cat-cty">${item.strCategory}.${item.strCountry}<p>
