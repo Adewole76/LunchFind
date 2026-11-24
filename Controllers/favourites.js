@@ -6,7 +6,22 @@ import { filterFavouritesArray } from "../model.js";
 const recipeContainer = document.querySelector('.recipes-container');
 const favouritesNumber = document.querySelector('.favourites-number');
 const recipeModal = document.querySelector('.recipe-modal')
-
+const sidebar = document.querySelector('.sidebar'); 
+const sidebarCloseBtn = document.querySelector('.sidebar-close-btn');
+const sidebarToggleOn = document.querySelector('.sidebar-toggleOn');
+const sidebarOverlay = document.querySelector('.overlay')
+sidebarToggleOn.addEventListener('click', function(){
+  sidebar.classList.add('active');
+  sidebarOverlay.classList.remove('hidden');
+});
+sidebarCloseBtn.addEventListener('click', function(){
+  sidebar.classList.remove('active');
+  sidebarOverlay.classList.add('hidden')
+})
+sidebarOverlay.addEventListener('click', function(){
+  sidebar.classList.remove('active');
+  sidebarOverlay.classList.add('hidden');
+})
 console.log(favourites);
 mappingFavouritesArray(favourites, recipeContainer);
 

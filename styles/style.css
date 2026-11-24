@@ -328,6 +328,7 @@ main header p{
     font-weight:var(--fw-regular);
     font-family:var(--font-ui);
     color:var(--charcoal);
+    margin-top: 5px;
 }
 
 /*recipe search section styles*/
