@@ -91,7 +91,7 @@ body{
     transform: translateX(-100%);
     background-color: white;
     z-index: 1600;
-    padding: 2em 0;
+    padding: 2em 1em;
     transition: transform 0.3s ease-in;
 }
 .sidebar.active{
@@ -106,9 +106,32 @@ body{
     list-style-type: none;
     font-family:var(--font-body);
 }
+.sidebar ul li{
+    padding: 1em 2px;
+}
+.sidebar ul li a{
+    color: var(--charcoal);
+    text-decoration: none;
+}
+.sidebar button{
+    background-color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--gray-200);
+}
 .sidebar img{
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
+}
+.overlay{
+    background-color: rgba(47, 5, 5, 0.55);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1550;
 }
 .sidebar section{
     display: flex;
